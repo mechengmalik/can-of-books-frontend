@@ -1,3 +1,8 @@
 .jumbotron{
   margin-bottom: 0;
+  text-align: center;
+}
+.sad{
+  background-color: aqua;
+  text-align: center;
 }
