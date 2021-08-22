@@ -1,7 +1,10 @@
 a{
   color:#fff;
+  display: inline-block;
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
 a:hover{
-  color:darkgrey;
+  color:aqua;
 }
