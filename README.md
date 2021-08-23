@@ -52,3 +52,17 @@ Start time: 2:00
 Finish time: 3:00
 
 Actual time needed to complete: 1 hour
+
+
+
+
+
+Name of feature: adding request to backend to get data to render the user data of favorite book
+
+Estimate of time needed to complete:
+
+Start time: 2:00
+
+Finish time: 6:00
+
+Actual time needed to complete: 4 hour
