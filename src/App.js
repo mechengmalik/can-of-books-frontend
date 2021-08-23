@@ -10,7 +10,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import LoginButton from './components/LoginButton';
+import Login from './Login';
 import Profile from './components/Profile';
 
 class App extends React.Component {
@@ -26,7 +26,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/">
                 {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
-                {isAuthenticated ? <BestBooks/> : <LoginButton/>}
+                {isAuthenticated ? <BestBooks/> : <Login/>}
 
               </Route>
               <Route exact path="/Profile">
