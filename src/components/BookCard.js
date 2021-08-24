@@ -2,18 +2,30 @@
 import {React,  Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { withAuth0 } from '@auth0/auth0-react';
-import Card from 'react-bootstrap/Card';
+import {Button,Card} from 'react-bootstrap/';
 
 
 
 
 class BookCard extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    deleteBook = ()=>{
+        this.props.deleteBook(this.props.book._id)
+    }
   
   render() {
-      console.log(this.props)
+    //   console.log(this.props)
 
     
     return(
+        <div>
+
+        <Button variant="danger" onClick={this.deleteBook}>
+              X
+            </Button> 
         <Card style={{ width: '18rem' }}>
           <Card.Body>
               {/* <small>{this.props.books.userEmail.substring(0,typeof'@')}</small> */}
@@ -28,6 +40,8 @@ class BookCard extends Component {
           </Card.Body>
            
         </Card>
+
+        </div>
       )
   }
 }
