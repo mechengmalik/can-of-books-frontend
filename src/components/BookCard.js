@@ -16,13 +16,13 @@ class BookCard extends Component {
     return(
         <Card style={{ width: '18rem' }}>
           <Card.Body>
-              <small>{this.props.books.userEmail.substring(0,typeof'@')}</small>
+              {/* <small>{this.props.books.userEmail.substring(0,typeof'@')}</small> */}
             <Card.Title>{this.props.book.bookName}</Card.Title>
             <Card.Text>
               
             </Card.Text>
             <Card.Text>
-              {this.props.books.description}
+              {this.props.book.description}
             </Card.Text>
             
           </Card.Body>
