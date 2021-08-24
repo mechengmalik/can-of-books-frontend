@@ -13,24 +13,26 @@ class MyFavoriteBooks extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      booksinfo:[]
+      booksInfo:[]
     }
   }
   componentDidMount =async ()=>{
     const { user } = this.props.auth0;
 
-    let urlBookData = `${process.env.REACT_APP_DATABASE}/books?userEmail=${user.email})`;
-    console.log(urlBookData);
+    let urlBookData = `${process.env.REACT_APP_DATABASE}/books?userEmail=${user.email}`;
+    console.log('ddddddd',urlBookData);
     let booksData = await axios.get(urlBookData);
+    console.log('0gghhghgh',booksData.data)
     this.setState({
-      booksinfo: booksData.data,
+      booksInfo: booksData.data,
+
     });
   }
 
 
 
   render() {
-    console.log('check data', this.state.booksinfo[0]);
+    console.log('check data', this.state.booksInfo[0]);
 
     return(
       <div>
@@ -41,8 +43,9 @@ class MyFavoriteBooks extends React.Component {
             This is a collection of my favorite books
           </p>
         </Jumbotron>
-        {this.state.booksinfo.length > 0 && (this.state.booksinfo.map((book,i)=> <BookCard book ={book} key={i} />
-        ))}
+        {this.state.booksInfo.length > 0 && (this.state.booksInfo.map((book,i)=> <BookCard book ={book} key={i} /> 
+         ))} 
+        
         
         </div>
     )
