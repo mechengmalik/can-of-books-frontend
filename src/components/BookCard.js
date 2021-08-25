@@ -23,9 +23,6 @@ class BookCard extends Component {
     return(
         <div>
 
-        <Button variant="danger" onClick={this.deleteBook}>
-              X
-            </Button> 
         <Card style={{ width: '18rem' }}>
           <Card.Body>
               {/* <small>{this.props.books.userEmail.substring(0,typeof'@')}</small> */}
@@ -38,6 +35,12 @@ class BookCard extends Component {
             </Card.Text>
             
           </Card.Body>
+        <Button variant="danger" onClick={this.deleteBook}>
+              X
+            </Button> 
+            <Button variant="info" onClick={this.updateBook}>
+            Update
+            </Button> 
            
         </Card>
 
