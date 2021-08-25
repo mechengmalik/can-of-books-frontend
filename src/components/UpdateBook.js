@@ -11,14 +11,14 @@ import { Modal, Form } from 'react-bootstrap';
 
 
 
-class BookFormModal extends Component {
+class UpdateBook extends Component {
 
   constructor(props) {
     super(props);
 }
 
-addBook = (event)=>{
-  this.props.addBook(event);
+updateBookInfo = (e)=>{
+  this.props.updateBook(e);
 }
 
 handleClose = ()=>{
@@ -36,15 +36,15 @@ handleClose = ()=>{
       <Modal show={this.props.show} onHide = {this.handleClose}>
 
         <Modal.Body>
-          <Form on onSubmit={this.addBook}>
+          <Form on onSubmit={this.updateBookInfo}>
             <Form.Group className="mb-3" controlId="formBasicPassword">
              
-              <Form.Control type='text' name='bookName' placeholder='book Tiltle' />
+              <Form.Control type='text' name='bookName' defaultValue={this.props.bookInfo.bookName}/>
               
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
              
-              <Form.Control type='text' name='description' placeholder='description' />
+              <Form.Control type='text' name='description' defaultValue={this.props.bookInfo.description} />
               
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -64,4 +64,4 @@ handleClose = ()=>{
   }
 }
 
-export default BookFormModal;
+export default UpdateBook;
