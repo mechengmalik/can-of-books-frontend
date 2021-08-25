@@ -4,10 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import './BestBooks.css';
 import BookCard from "./components/BookCard";
-
+import UpdateBook from "./components/UpdateBook";
 import { withAuth0 } from '@auth0/auth0-react';
 import BookFormModal from "./components/BookFormModal";
 import { Button } from "react-bootstrap/";
+
 
 
 class MyFavoriteBooks extends React.Component {
@@ -15,7 +16,8 @@ class MyFavoriteBooks extends React.Component {
     super(props);
     this.state = {
       booksInfo: [],
-      show: false
+      show: false,
+      selectedBook:{}
     }
   }
   componentDidMount = async () => {
@@ -43,7 +45,9 @@ class MyFavoriteBooks extends React.Component {
   }
 
   handleClose = () => {
-    this.setState({ show: false });
+    this.setState({
+       show: false 
+      });
   }
 
 
@@ -95,6 +99,44 @@ class MyFavoriteBooks extends React.Component {
 
 
   }
+  
+
+  updateBook = async(bookID)=>{
+    
+    let chosenBook = this.state.booksInfo.find(book=>{
+      return book.id === bookID;
+    })
+    this.setState({
+      selectedBook:chosenBook,
+      show:true,
+    })
+
+
+  }
+
+
+
+  updateBookInfo = async (e)=>{
+    e.preventDefault();
+    const { user } = this.props.auth0;
+
+    let bookData = {
+      userEmail :user.email,
+      bookName: e.target.bookName.value,
+      description:e.target.description.value
+    }
+    let bookID = this.state.selectedBook._id
+
+    let updateInfo = await axios.put(`${process.env.REACT_APP_DATABASE}/updatebook/${bookID}`, bookData);
+
+    this.setState({
+      booksInfo:updateInfo.data,
+
+    })
+
+    
+
+  }
 
 
 
@@ -118,7 +160,13 @@ class MyFavoriteBooks extends React.Component {
         {/* {this.state.newBook.length > 0 && (this.state.newBook.map((data,i)=> <AddBook data ={data} key={i} /> ))} */}
 
 
-        {this.state.booksInfo.length > 0 && (this.state.booksInfo.map((book, i) => <BookCard book={book} key={i} deleteBook={this.deleteBook} />
+        {this.state.booksInfo.length > 0 && (this.state.booksInfo.map((book, i) => <BookCard book={book} key={i} deleteBook={this.deleteBook} show={this.showModal}/>
+
+        
+
+        
+        ))}
+        {this.state.booksInfo.length > 0 && (this.state.booksInfo.map((book, i) => <UpdateBook book={book} key={i} updateBook={this.updateBook} updateBookInfo={this.updateBookInfo} handleClose={this.handleClose} bookInfo={this.state.selectedBook}  />
         ))}
 
 

@@ -15,6 +15,9 @@ class BookCard extends Component {
     deleteBook = ()=>{
         this.props.deleteBook(this.props.book._id)
     }
+    updateBook = ()=>{
+      this.props.updateBook(this.props.book._id)
+  }
   
   render() {
     //   console.log(this.props)
@@ -38,7 +41,7 @@ class BookCard extends Component {
         <Button variant="danger" onClick={this.deleteBook}>
               X
             </Button> 
-            <Button variant="info" onClick={this.updateBook}>
+            <Button variant="info" onClick={this.props.show}>
             Update
             </Button> 
            
